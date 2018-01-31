@@ -1,5 +1,4 @@
-//initiatilize a 2D array 16 values long with null values
-// var zeroArray= Array(4).fill().map(() => Array(4).fill(0));
+
 //initiatilize an array 16 values long with null values
 var zeroArray = Array.from({ length: 16 }, () => 0);
 // console.log (zeroArray); 
@@ -17,4 +16,6 @@ zeroArray.splice(indx2,1,2);
 // test case would be to check the length of array eq to 16 and sum equal to four
 
 // convert array into 2D array
-// console.table (zeroArray);
+var initArray= [];
+while(zeroArray.length) initArray.push(zeroArray.splice(0,4));
+console.table (initArray);
