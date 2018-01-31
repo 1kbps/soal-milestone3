@@ -18,4 +18,4 @@ zeroArray.splice(indx2,1,2);
 // convert array into 2D array
 var initArray= [];
 while(zeroArray.length) initArray.push(zeroArray.splice(0,4));
-console.table (initArray);
+// console.table (initArray);
