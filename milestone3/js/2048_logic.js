@@ -1,15 +1,6 @@
 
-// var xTable = require('./console.table');
-// var keypress = require('./keypress');
-
-/*
-var x = [[0,0,0,2],
-         [0,0,0,0],
-         [0,0,0,0],
-         [2,2,4,2]];
-var newArray = [[]];     
-*/
-
+var xTable = require('./console.table');
+var keypress = require('./keypress');
 
 //initiatilize an array 16 values long with null values
 var zeroArray = Array.from({ length: 16 }, () => 0);
@@ -32,10 +23,6 @@ var initArray= [];
 while(zeroArray.length) initArray.push(zeroArray.splice(0,4));
 // console.table (initArray);
 
-
-console.table (initArray);
-
-
 var display = function(array){
     var arrDsp = '';
         for (var i = 0; i < array.length; i++) {
@@ -46,15 +33,46 @@ var display = function(array){
         arrDsp='';
     }
 }
-/*
+
 var keypress = require('keypress');
- 
+
 // make `process.stdin` begin emitting "keypress" events 
 keypress(process.stdin);
+    
  
 // listen for the "keypress" event 
 process.stdin.on('keypress', function (ch, key) {
-  console.log('got "keypress"', key);
+  
+   if(key.name == 'left'){
+       process.stdout.write('\033c');
+       left();
+       console.table(newArray);
+   }
+
+
+   if(key.name == 'up'){
+    process.stdout.write('\033c');
+    up();
+    console.table(newArray);
+    
+}
+
+
+if(key.name == 'down'){
+    process.stdout.write('\033c');
+    down();
+    console.table(newArray);
+    
+}
+
+if(key.name == 'right'){
+    process.stdout.write('\033c');
+    right();
+    console.table(newArray);
+    
+}   
+    
+  
   
   if (key && key.ctrl && key.name == 'c') {
     process.stdin.pause();
@@ -62,7 +80,6 @@ process.stdin.on('keypress', function (ch, key) {
 });
 process.stdin.setRawMode(true);
 process.stdin.resume();
-*/
 
 
 var left = function(){
