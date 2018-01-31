@@ -1,17 +1,39 @@
 
-var xTable = require('./console.table');
-var keypress = require('./keypress');
+// var xTable = require('./console.table');
+// var keypress = require('./keypress');
 
-
+/*
 var x = [[0,0,0,2],
          [0,0,0,0],
          [0,0,0,0],
          [2,2,4,2]];
-var xNew = [[]];     
+var newArray = [[]];     
+*/
 
 
+//initiatilize an array 16 values long with null values
+var zeroArray = Array.from({ length: 16 }, () => 0);
+// console.log (zeroArray); 
+// test case would be to check the length of array eq to 16 and sum equal to zero
+
+// generate two random index values between 0 and 15
+var indx1 = Math.floor(Math.random() * 15);
+var indx2 = Math.floor(Math.random() * 15);
+// console.log (indx1, indx2); 
+
+// change the value of those index values from null to 2
+zeroArray.splice(indx1,1,2);
+zeroArray.splice(indx2,1,2);
+// console.log (zeroArray);
+// test case would be to check the length of array eq to 16 and sum equal to four
+
+// convert array into 2D array
+var initArray= [];
+while(zeroArray.length) initArray.push(zeroArray.splice(0,4));
+// console.table (initArray);
 
 
+console.table (initArray);
 
 
 var display = function(array){
@@ -24,7 +46,7 @@ var display = function(array){
         arrDsp='';
     }
 }
-
+/*
 var keypress = require('keypress');
  
 // make `process.stdin` begin emitting "keypress" events 
@@ -40,22 +62,22 @@ process.stdin.on('keypress', function (ch, key) {
 });
 process.stdin.setRawMode(true);
 process.stdin.resume();
-
+*/
 
 
 var left = function(){
 
-xNew=x;
-    for (var i = 0; i < x.length; i++) {
-    for (var j = 0; j < x.length; j++) {
+newArray=initArray;
+    for (var i = 0; i < initArray.length; i++) {
+    for (var j = 0; j < initArray.length; j++) {
         
-            if(x[i][j] === 0 ){
+            if(initArray[i][j] === 0 ){
                 continue;
             }
         
-            if(x[i][j-1] === 0 || x[i][j-1] === x[i][j]){
-            xNew[i][j-1] = x[i][j-1] + x[i][j];
-            xNew[i][j] = 0;
+            if(initArray[i][j-1] === 0 || initArray[i][j-1] === initArray[i][j]){
+            newArray[i][j-1] = initArray[i][j-1] + initArray[i][j];
+            newArray[i][j] = 0;
             
             }
         
@@ -71,17 +93,17 @@ xNew=x;
 
 var right = function(){
 
-    xNew=x;
-        for (var i = 0; i < x.length; i++) {
-        for (var j = 0; j < x.length; j++) {
+    newArray=initArray;
+        for (var i = 0; i < initArray.length; i++) {
+        for (var j = 0; j < initArray.length; j++) {
             
-                if(x[i][j] === 0 ){
+                if(initArray[i][j] === 0 ){
                     continue;
                 }
             
-                if(x[i][j+1] === 0 || x[i][j+1] === x[i][j]){
-                xNew[i][j+1] = x[i][j+1] + x[i][j];
-                xNew[i][j] = 0;
+                if(initArray[i][j+1] === 0 || initArray[i][j+1] === initArray[i][j]){
+                newArray[i][j+1] = initArray[i][j+1] + initArray[i][j];
+                newArray[i][j] = 0;
                 
                 }
             
@@ -90,23 +112,23 @@ var right = function(){
         }
         
         
-        //display(xNew);
+        //display(newArray);
     }
 
 
     var up = function(){
 
-        xNew=x;
-            for (var i = 0; i < x.length; i++) {
-            for (var j = 0; j < x.length; j++) {
+        newArray=initArray;
+            for (var i = 1; i < initArray.length; i++) {
+            for (var j = 0; j < initArray.length; j++) {
                 
-                    if(x[i][j] === 0 ){
+                    if(initArray[i][j] === 0 ){
                         continue;
                     }
                 
-                    if(x[i-1][j] === 0 || x[i-1][j] === x[i][j]){
-                    xNew[i-1][j] = x[i-1][j] + x[i][j];
-                    xNew[i][j] = 0;
+                    if(initArray[i-1][j] === 0 || initArray[i-1][j] === initArray[i][j]){
+                    newArray[i-1][j] = initArray[i-1][j] + initArray[i][j];
+                    newArray[i][j] = 0;
                     
                     }
                 
@@ -121,17 +143,17 @@ var right = function(){
 
         var down = function(){
 
-            xNew=x;
-                for (var i = 0; i < x.length; i++) {
-                for (var j = 0; j < x.length; j++) {
+            newArray=initArray;
+                for (var i = 0; i < initArray.length - 1; i++) {
+                for (var j = 0; j < initArray.length; j++) {
                     
-                        if(x[i][j] === 0 ){
+                        if(initArray[i][j] === 0 ){
                             continue;
                         }
                     
-                        if(x[i+1][j] === 0 || x[i+1][j] === x[i][j]){
-                        xNew[i+1][j] = x[i+1][j] + x[i][j];
-                        xNew[i][j] = 0;
+                        if(initArray[i+1][j] === 0 || initArray[i+1][j] === initArray[i][j]){
+                        newArray[i+1][j] = initArray[i+1][j] + initArray[i][j];
+                        newArray[i][j] = 0;
                         
                         }
                     
@@ -148,8 +170,11 @@ var right = function(){
         
                        
 
-//display(x);
+//display(initArray);
 
-
-console.table(xNew);
-
+up();
+console.table(newArray);
+down();
+console.table(newArray);
+left();
+console.table(newArray);
